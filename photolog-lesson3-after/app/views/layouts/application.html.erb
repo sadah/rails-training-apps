@@ -13,6 +13,8 @@
 
 <div class="container">
   <% if user_signed_in? %>
+    <%= image_tag current_user.avatar_url %>
+    <%= current_user.user_name %>
     <%= link_to 'logout', destroy_user_session_path, method: :delete %>
   <% else %>
     <%= link_to 'facebook login', user_omniauth_authorize_path(:facebook) %>
