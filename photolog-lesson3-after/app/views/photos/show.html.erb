@@ -4,10 +4,12 @@
     <%= image_tag(@photo.image_url) if @photo.image.present? %>
     <div>
       <h4><%= @photo.caption %></h4>
-      <p>
-        <%= link_to 'Edit', edit_photo_path(@photo) %>
-        <%= link_to 'Destroy', @photo, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </p>
+      <% if user_signed_in? && @photo.user == current_user %>
+        <p>
+          <%= link_to 'Edit', edit_photo_path(@photo) %>
+          <%= link_to 'Destroy', @photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      <% end %>
     </div>
   </div>
 </div>
