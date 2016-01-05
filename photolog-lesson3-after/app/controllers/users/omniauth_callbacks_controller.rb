@@ -1,5 +1,9 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
+  def facebook
+    callback_from :facebook
+  end
+
   def twitter
     callback_from :twitter
   end
@@ -8,7 +12,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def callback_from(provider)
     provider = provider.to_s
-    binding.pry
     @user = User.find_or_create_from_oauth(request.env['omniauth.auth'])
 
     if @user.persisted?

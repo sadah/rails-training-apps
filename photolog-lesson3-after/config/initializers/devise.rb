@@ -263,4 +263,8 @@ Devise.setup do |config|
     Rails.application.secrets.twitter_api_key,
     Rails.application.secrets.twitter_api_secret
 
+  config.omniauth :facebook,
+    Rails.application.secrets.facebook_api_key,
+    Rails.application.secrets.facebook_api_secret
+
 end

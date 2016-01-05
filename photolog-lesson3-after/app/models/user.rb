@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
 
   def self.find_or_create_from_oauth(auth)
     User.find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
-      user.user_name   = auth.info.nickname
-      user.avatar_url = auth.info.image
+      user.user_name  = auth.info.nickname || auth.info.name
+      user.avatar_url = auth.info.image || auth.info.image
       user.email      = User.dummy_email(auth)
       user.password   = Devise.friendly_token[0, 20]
     end
