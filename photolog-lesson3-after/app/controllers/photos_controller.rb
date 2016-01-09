@@ -12,6 +12,8 @@ class PhotosController < ApplicationController
   # GET /photos/1.json
   def show
     @photo = Photo.includes(:user).find(params[:id])
+    @comments = @photo.comments.all
+    @comment  = @photo.comments.build(user_id: current_user.id) if current_user
   end
 
   # GET /photos/new
