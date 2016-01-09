@@ -5,7 +5,6 @@ class BookmarksController < ApplicationController
   # GET /bookmarks.json
   def index
     @bookmarks = Bookmark.all
-    binding.play
   end
 
   # GET /bookmarks/1
